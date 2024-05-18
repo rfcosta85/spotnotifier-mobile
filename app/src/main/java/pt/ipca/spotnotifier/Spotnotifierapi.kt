@@ -94,7 +94,32 @@ class Spotnotifierapi (ip: String){
     fun recuperacao_password(login: String,
                              nova_pass: String
     ) {
+        val x = this.get_utilizadores()
+        val jsonArray = JSONArray(x)
+        for (i in 0 until jsonArray.length()) {
+            val item = jsonArray.getJSONObject(i)
+            val email = item.getString("email")
+            if (email == login) {
+                val id = item.getString("id")
+                val password = nova_pass
+                val primeironome = item.getString("primero_nome")
+                val ultimo_nome = item.getString("ultimo_nome")
 
+                var x = rest_request("http://"+ ip + ":8000/api/Utilizadores/" + id + "/", "PUT",
+                    """
+                {
+                    "email": "$email",
+                    "password": "$password",
+                    "primeiro_nome": "$primeironome",
+                    "ultimo_nome": "$ultimo_nome"
+                }
+            """.trimIndent(),
+                    HttpURLConnection.HTTP_OK
+                )
+
+            }
+
+        }
     }
 
     fun recuperacao_nome(login: String,
@@ -145,6 +170,31 @@ class Spotnotifierapi (ip: String){
     }
 
     fun email_atualizar(login: String) {
+        val x = this.get_utilizadores()
+        val jsonArray = JSONArray(x)
+        for (i in 0 until jsonArray.length()) {
+            val item = jsonArray.getJSONObject(i)
+            val email = item.getString("email")
+            if (email == login) {
+                val id = item.getString("id")
+                val password = item.getString("password")
+                val primeironome = item.getString("primero_nome")
+                val ultimo_nome = item.getString("ultimo_nome")
 
+                var x = rest_request("http://"+ ip + ":8000/api/Utilizadores/" + id + "/", "PUT",
+                    """
+                {
+                    "email": "$login",
+                    "password": "$password",
+                    "primeiro_nome": "$primeironome",
+                    "ultimo_nome": "$ultimo_nome"
+                }
+            """.trimIndent(),
+                    HttpURLConnection.HTTP_OK
+                )
+
+            }
+
+        }
     }
 }
