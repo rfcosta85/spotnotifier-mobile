@@ -12,7 +12,9 @@ import android.widget.Toast
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 
-class Spotnotifierapi {
+class Spotnotifierapi (ip: String){
+
+    val ip:String = ip
     fun rest_request(url: String, tipo: String, data: String, expectedResponseCode: Int) : String {
         StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitNetwork().build())
         val response = StringBuilder()
@@ -29,8 +31,6 @@ class Spotnotifierapi {
             writer.flush()
             writer.close()
         }
-
-
 
         val responseCode = connection.responseCode
         if (responseCode == expectedResponseCode) {
@@ -59,7 +59,7 @@ class Spotnotifierapi {
                            email: String,
                            imagem: String?
                            ) {
-        var x = rest_request("http://192.168.1.183:8000/api/Utilizadores/", "POST",
+        var x = rest_request("http://"+ ip + ":8000/api/Utilizadores/", "POST",
             """
                 {
                     "email": "$email",
@@ -74,8 +74,16 @@ class Spotnotifierapi {
 
     }
 
+    fun get_utilizadores() : String{
+        var r = rest_request("http://"+ ip + ":8000/api/Utilizadores/", "GET",
+            "",
+            HttpURLConnection.HTTP_OK
+        )
+        return r
+    }
+
     fun codigo_teste() {
-        var x = rest_request("http://192.168.1.183:8000/api/Utilizadores/", "GET", "",  HttpURLConnection.OK)
+        var x = rest_request("http://" + ip + ":8000/api/Utilizadores/", "GET", "",  HttpURLConnection.HTTP_OK)
         val jsonArray = JSONArray(x)
         for (i in 0 until jsonArray.length()) {
             val item = jsonArray.getJSONObject(i)
@@ -91,6 +99,34 @@ class Spotnotifierapi {
 
     fun recuperacao_nome(login: String,
                         novo_nome: String) {
+
+
+        val x = this.get_utilizadores()
+        val jsonArray = JSONArray(x)
+        for (i in 0 until jsonArray.length()) {
+            val item = jsonArray.getJSONObject(i)
+            val email = item.getString("email")
+            if (email == login) {
+                val id = item.getString("id")
+                val password = item.getString("password")
+                val primeironome = novo_nome
+                val ultimo_nome = item.getString("ultimo_nome")
+
+                var x = rest_request("http://"+ ip + ":8000/api/Utilizadores/" + id + "/", "PUT",
+                    """
+                {
+                    "email": "$email",
+                    "password": "$password",
+                    "primeiro_nome": "$primeironome",
+                    "ultimo_nome": "$ultimo_nome"
+                }
+            """.trimIndent(),
+                    HttpURLConnection.HTTP_OK
+                )
+
+            }
+
+        }
 
     }
 
