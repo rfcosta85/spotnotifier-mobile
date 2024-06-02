@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048689852978",
+    "project_id": "spotnotifier",
+    "storage_bucket": "spotnotifier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048689852978:android:ba4b7fc32ce33dc483f22b",
+        "android_client_info": {
+          "package_name": "pt.ipca.spotnotifier"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRMUuwPa3vzjsrj7Dl6tVZsfcVuVdgRI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
