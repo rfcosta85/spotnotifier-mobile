@@ -18,8 +18,11 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         try {
-            var x = Spotnotifierapi()
+            var x = Spotnotifierapi("192.168.1.183")
             x.registo_utilizador("a", "b", "c", "a@a.com", "")
+            val k = x.get_utilizadores()
+
+            val m = x.recuperacao_nome("a@a.com", "joaquim")
         } catch(e: Exception) {
             showError("Spotnotifierapi error: " + e.message)
         }
