@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">spotnotifier</string>
+    <string name="welcome_message" translatable="true">Welcome to Spotnotifier</string>
+    <string name="user_name" translatable="true">Insert username</string>
+    <string name="user_last_name" translatable="true">Insert the last name</string>
+    <string name="password" translatable="true">Insert your password</string>
+    <string name="email" translatable="true">Insert your Email</string>
+    <string name="register_button">Register</string>
+    <string name="first_name_label">First name</string>
+    <string name="last_name_label">last name</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="return_icon">return Icon</string>
+    <string name="logo">logo</string>
+    <string name="add_img">Add image</string>
+    <string name="user_login_name">Insert your username</string>
+    <string name="user_name_label_login">username</string>
+    <string name="button_login">Login</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="signIn">Not a user yet? SignIn</string>
 </resources>
