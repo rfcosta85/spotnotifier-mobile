@@ -40,6 +40,9 @@
         <activity
             android:name=".AlterarEnderecoEmailActivity"
             android:exported="true" />
+        <activity
+            android:name=".AlterarMoradaActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

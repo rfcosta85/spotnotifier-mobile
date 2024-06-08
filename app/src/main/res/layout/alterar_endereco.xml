@@ -66,7 +66,6 @@
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/dark_orange"
         android:fontFamily="@font/montserrat"
-        android:onClick="login"
         android:text="Alterar endereço de email"
         tools:layout_editor_absoluteX="145dp"
         app:layout_constraintBottom_toBottomOf="parent"
