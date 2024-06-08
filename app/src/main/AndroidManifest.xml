@@ -37,6 +37,9 @@
         <activity
             android:name=".RecuperacaoPasswordActivity"
             android:exported="true" />
+        <activity
+            android:name=".AlterarEnderecoEmailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
