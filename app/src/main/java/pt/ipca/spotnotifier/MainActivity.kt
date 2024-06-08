@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.alterar_endereco)
+        setContentView(R.layout.sobre)
         try {
             var x = Spotnotifierapi("192.168.1.183")
             x.registo_utilizador("a", "b", "c", "a@a.com", "")
