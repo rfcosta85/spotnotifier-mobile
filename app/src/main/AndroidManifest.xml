@@ -34,6 +34,9 @@
         <activity
             android:name=".SobreActivity"
             android:exported="true" />
+        <activity
+            android:name=".RecuperacaoPasswordActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
