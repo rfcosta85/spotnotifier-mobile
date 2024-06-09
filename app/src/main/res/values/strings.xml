@@ -11,6 +11,7 @@
     <string name="email_label">Email</string>
     <string name="password_label">Palavra-passe</string>
     <string name="new_password">Nova palavra passe</string>
+    <string name="insert_recovery_code">Insira o código</string>
     <string name="retype_password">Repita nova palavra-passe</string>
     <string name="return_icon">Ícone de retorno</string>
     <string name="logo">Logótipo</string>

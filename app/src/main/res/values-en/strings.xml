@@ -11,6 +11,7 @@
     <string name="last_name_label">last name</string>
     <string name="email_label">Email</string>
     <string name="password_label">Password</string>
+    <string name="insert_recovery_code">Insert code</string>
     <string name="new_password">New password</string>
     <string name="retype_password">Retype password</string>
     <string name="return_icon">return Icon</string>
