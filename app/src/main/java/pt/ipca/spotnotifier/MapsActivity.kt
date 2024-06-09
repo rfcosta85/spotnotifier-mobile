@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,6 +25,8 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import pt.ipca.spotnotifier.databinding.ActivityMapsBinding
+import kotlin.math.cos
+import kotlin.math.sin
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -31,6 +34,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     private val LOCATION_PERMISSION_REQUEST_CODE = 1
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var userLocation: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +47,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        checkLocationPermission()
 
         val autoCompleteFragment = AutocompleteSupportFragment()
         supportFragmentManager.beginTransaction()
@@ -102,11 +109,51 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.setMinZoomPreference(13.0f)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                userLocation = LatLng(location.latitude, location.longitude)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 13f))
+                addMarkersAroundUserLocation(userLocation)
+            }
+        }
+//        val barcelos = LatLng(41.53345229690391, -8.622321031592374)
+//        mMap.addMarker(MarkerOptions().position(barcelos).title("Cidade de Barcelos"))
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(barcelos))
 
-        val barcelos = LatLng(41.53345229690391, -8.622321031592374)
-        mMap.addMarker(MarkerOptions().position(barcelos).title("Cidade de Barcelos"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(barcelos))
+    }
 
+    private fun addMarkersAroundUserLocation(userLocation: LatLng) {
+        val numMarkers = 6
+        val radius = 1000
+
+        val angleIncrement = 360f / numMarkers
+        for(i in 0 until numMarkers) {
+            val angle = i * angleIncrement
+            val offsetX = (radius * cos(Math.toRadians(angle.toDouble()))).toFloat()
+            val offsetY = (radius * sin(Math.toRadians(angle.toDouble()))).toFloat()
+            val newLat = userLocation.latitude + offsetY / 111111
+            val newLng = userLocation.longitude + offsetX / (111111 * cos(Math.toRadians(userLocation.latitude)))
+
+            val markerPosition = LatLng(newLat, newLng)
+            mMap.addMarker(MarkerOptions().position(markerPosition).title("Marker $i"))
+        }
     }
 
     private fun getLastKnownLocation() {

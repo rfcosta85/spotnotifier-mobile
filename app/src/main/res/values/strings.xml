@@ -23,4 +23,5 @@
     <string name="forgot_password">Esqueceu a sua palavra-passe</string>
     <string name="signIn">Ainda não é utilizador? Regista-se</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="button_spot_places">Vagas</string>
 </resources>

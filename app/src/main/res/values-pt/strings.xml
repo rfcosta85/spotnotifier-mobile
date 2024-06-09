@@ -23,4 +23,6 @@
     <string name="recovery_password_button">Salvar senha</string>
     <string name="forgot_password">Esqueceu a sua senha</string>
     <string name="signIn">Ainda não é usuário? Cadastra-se</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="button_spot_places">Vagas</string>
 </resources>
