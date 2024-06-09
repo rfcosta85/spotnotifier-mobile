@@ -61,9 +61,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
                 val latLng = place.latLng
-                if (latLng != null) {
-                    mMap.addMarker(MarkerOptions().position(latLng).title(place.name))
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+//                if (latLng != null) {
+//                    mMap.addMarker(MarkerOptions().position(latLng).title(place.name))
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+//                }
+                place.latLng?.let {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 13f))
+                    addMarkersAroundUserLocation(it)
                 }
             }
             override fun onError(status: com.google.android.gms.common.api.Status) {
@@ -133,10 +137,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 addMarkersAroundUserLocation(userLocation)
             }
         }
-//        val barcelos = LatLng(41.53345229690391, -8.622321031592374)
-//        mMap.addMarker(MarkerOptions().position(barcelos).title("Cidade de Barcelos"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(barcelos))
-
     }
 
     private fun addMarkersAroundUserLocation(userLocation: LatLng) {
