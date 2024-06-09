@@ -32,21 +32,21 @@
         android:backgroundTint="@color/white"
         android:layout_alignParentTop="true"/>
 
-    <Button
-        android:id="@+id/button_vagas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="68dp"
-        android:drawableLeft="@drawable/ic_list"
-        android:drawablePadding="8dp"
-        android:padding="12dp"
-        android:text="@string/button_spot_places"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/light_blue"
-        />
+<!--    <Button-->
+<!--        android:id="@+id/button_vagas"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginEnd="68dp"-->
+<!--        android:drawableLeft="@drawable/ic_list"-->
+<!--        android:drawablePadding="8dp"-->
+<!--        android:padding="12dp"-->
+<!--        android:text="@string/button_spot_places"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:backgroundTint="@color/light_blue"-->
+<!--        />-->
 
 </RelativeLayout>

@@ -1,7 +1,9 @@
 package pt.ipca.spotnotifier
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -136,6 +139,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 13f))
                 addMarkersAroundUserLocation(userLocation)
             }
+        }
+        mMap.setOnMarkerClickListener { marker ->
+            navigateToMarker(marker)
+            true
+        }
+    }
+
+//    private fun navigateToMarker(destination: LatLng) {
+//        val gmmIntentUri = Uri.parse("google.navigation:q${destination.latitude}, ${destination.longitude}")
+//        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+//        mapIntent.setPackage("com.google.android.apps.maps")
+//        if (mapIntent.resolveActivity(packageManager) != null) {
+//            startActivity(mapIntent)
+//        } else {
+//            val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+//            startActivity(browserIntent)
+//        }
+//    }
+
+    private fun navigateToMarker(marker: Marker) {
+        val position = marker.position
+        val gmmIntentUri = Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        if (mapIntent.resolveActivity(packageManager) != null) {
+            startActivity(mapIntent)
+        } else {
+            val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(browserIntent)
         }
     }
 
