@@ -1,6 +1,7 @@
 package pt.ipca.spotnotifier
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -47,7 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
             override fun onError(status: com.google.android.gms.common.api.Status) {
-                println("An error ocurred: $status")
+                Log.d("MEI", "DocumentSnapshot added with ID: $status")
             }
         })
     }
