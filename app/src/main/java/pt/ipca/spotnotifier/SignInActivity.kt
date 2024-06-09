@@ -111,8 +111,11 @@ class SignInActivity : AppCompatActivity() {
         val email = binding.mainEtName.text.toString()
         val password = binding.mainEtPassword.text.toString()
         authUserInFireBase(email, password)
-//        val intent = Intent(this, MainActivity::class.java)
-//        startActivity(intent)
+    }
+
+    fun recovery(v: View) {
+        val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
+        startActivity(intent)
     }
 
     private fun authUserInFireBase(email: String, password: String) {

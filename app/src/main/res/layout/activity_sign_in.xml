@@ -111,6 +111,7 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
+        android:onClick='recovery'
         android:text="@string/forgot_password"
         android:textColor="@color/light_blue"
         android:textSize="16sp" />

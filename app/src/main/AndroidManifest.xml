@@ -33,10 +33,10 @@
         </activity>
         <activity
             android:name=".SobreActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".RecuperacaoPasswordActivity"
-            android:exported="true" />
+            android:exported="false" />
     </application>
 
 </manifest>
