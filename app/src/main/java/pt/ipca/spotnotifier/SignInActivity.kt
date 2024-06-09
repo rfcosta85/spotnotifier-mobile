@@ -114,8 +114,17 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun recovery(v: View) {
-        val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
-        startActivity(intent)
+        val email: String = binding.mainEtName.text.toString()
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(baseContext, "Email de Recuperação enviado", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(baseContext, "Erro ao enviar email de recuperação", Toast.LENGTH_SHORT).show()
+                }
+            }
+//        val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
+//        startActivity(intent)
     }
 
     private fun authUserInFireBase(email: String, password: String) {

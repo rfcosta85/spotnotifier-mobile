@@ -11,12 +11,16 @@
     <string name="last_name_label">último nome</string>
     <string name="email_label">Email</string>
     <string name="password_label">Senha</string>
+    <string name="insert_recovery_code">Insira o código</string>
+    <string name="new_password">Nova senha</string>
+    <string name="retype_password">Repita nova senha</string>
     <string name="return_icon">Ícone de retorno</string>
     <string name="logo">Logo</string>
     <string name="add_img">Adicionar imagem</string>
-    <string name="user_login_name">Insira seu nome de utilizador</string>
+    <string name="user_login_name">Insira seu nome de usuário</string>
     <string name="user_name_label_login">Nome do usuário</string>
     <string name="button_login">Entrar</string>
+    <string name="recovery_password_button">Salvar senha</string>
     <string name="forgot_password">Esqueceu a sua senha</string>
     <string name="signIn">Ainda não é usuário? Cadastra-se</string>
 </resources>
