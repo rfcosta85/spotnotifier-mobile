@@ -11,12 +11,15 @@
     <string name="last_name_label">last name</string>
     <string name="email_label">Email</string>
     <string name="password_label">Password</string>
+    <string name="new_password">New password</string>
+    <string name="retype_password">Retype password</string>
     <string name="return_icon">return Icon</string>
     <string name="logo">logo</string>
     <string name="add_img">Add image</string>
     <string name="user_login_name">Insert your username</string>
     <string name="user_name_label_login">username</string>
     <string name="button_login">Login</string>
+    <string name="recovery_password_button">save password</string>
     <string name="forgot_password">Forgot password</string>
     <string name="signIn">Not a user yet? SignIn</string>
 </resources>
