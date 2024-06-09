@@ -1,8 +1,9 @@
 package pt.ipca.spotnotifier
 
 import android.os.Bundle
-import android.widget.Button
+import android.view.View
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class RecuperacaoPasswordActivity : AppCompatActivity() {
@@ -17,4 +18,8 @@ class RecuperacaoPasswordActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+    fun recovery_password(view: View){
+        Toast.makeText(baseContext, "Botão clicado", Toast.LENGTH_SHORT).show()
+    }
 }
