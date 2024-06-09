@@ -1,8 +1,16 @@
 package pt.ipca.spotnotifier
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,6 +27,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private val LOCATION_PERMISSION_REQUEST_CODE = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +60,31 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.d("MEI", "DocumentSnapshot added with ID: $status")
             }
         })
+
+        autoCompleteFragment.view?.let {
+            val inputText = it.findViewById<EditText>(com.google.android.libraries.places.R.id.places_autocomplete_search_input)
+            inputText.setBackgroundResource(R.drawable.border_input)
+            inputText.hint = "Pesquise aqui"
+            inputText.setCompoundDrawablesWithIntrinsicBounds(
+                R.drawable.ic_geolocation,
+                0,
+                R.drawable.ic_microphone,
+                0
+            )
+
+            val userIcon = ImageView(this).apply {
+                setImageResource(R.drawable.ic_user)
+                setPadding(8,8,8,8)
+            }
+
+            val layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+
+            val inputLayout = findViewWithType(it, LinearLayout::class.java)
+            inputLayout?.addView(userIcon, layoutParams)
+        }
     }
 
     /**
@@ -71,4 +105,55 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(barcelos))
 
     }
+
+    private fun <T : View> findViewWithType(root: View, viewType: Class<T>): T? {
+        if (viewType.isInstance(root)) {
+            return viewType.cast(root)
+        }
+        if (root is ViewGroup) {
+            for (i in 0 until root.childCount) {
+                val child = root.getChildAt(i)
+                val result = findViewWithType(child, viewType)
+                if (result != null) {
+                    return result
+                }
+            }
+        }
+        return null
+    }
+
+//    private fun checkLocationPermission() {
+//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//            != PackageManager.PERMISSION_GRANTED) {
+//            // Permission is not granted, show rationale or request permission
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+//                LOCATION_PERMISSION_REQUEST_CODE
+//            )
+//        } else {
+//            // Permission has already been granted
+//            getLastKnownLocation()
+//        }
+//    }
+//
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        when (requestCode) {
+//            LOCATION_PERMISSION_REQUEST_CODE -> {
+//                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+//                    // Permission granted
+//                    getLastKnownLocation()
+//                } else {
+//                    // Permission denied
+//                    // Show message to the user about the importance of the permission
+//                }
+//                return
+//            }
+//        }
+//    }
+
 }
