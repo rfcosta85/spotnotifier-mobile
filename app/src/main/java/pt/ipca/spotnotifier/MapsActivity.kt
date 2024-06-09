@@ -8,6 +8,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import pt.ipca.spotnotifier.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -21,10 +25,31 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Places.initialize(applicationContext, "AIzaSyDANa7oAPs8AA-PjFGIEOqBsZR6eNiwmQ8")
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        val autoCompleteFragment = AutocompleteSupportFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.autocomplete_fragment_container, autoCompleteFragment)
+            .commit()
+
+        autoCompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+
+        autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                val latLng = place.latLng
+                if (latLng != null) {
+                    mMap.addMarker(MarkerOptions().position(latLng).title(place.name))
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+                }
+            }
+            override fun onError(status: com.google.android.gms.common.api.Status) {
+                println("An error ocurred: $status")
+            }
+        })
     }
 
     /**
@@ -39,7 +64,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.setMinZoomPreference(13.0f)
-        // Add a marker in Sydney and move the camera
+
         val barcelos = LatLng(41.53345229690391, -8.622321031592374)
         mMap.addMarker(MarkerOptions().position(barcelos).title("Cidade de Barcelos"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(barcelos))
