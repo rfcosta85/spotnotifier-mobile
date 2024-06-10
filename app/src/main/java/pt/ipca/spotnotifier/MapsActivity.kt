@@ -42,10 +42,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val googleMapsApiKey = applicationContext.packageManager
+            .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
+            .metaData.getString("com.google.android.geo.API_KEY")
+
+        if (googleMapsApiKey != null) {
+            Places.initialize(applicationContext, googleMapsApiKey)
+        } else {
+            Log.e("MapsActivity", "API keys not found in meta-data")
+        }
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Places.initialize(applicationContext, "AIzaSyDANa7oAPs8AA-PjFGIEOqBsZR6eNiwmQ8")
+//        Places.initialize(applicationContext, "@string/google_maps_key")
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

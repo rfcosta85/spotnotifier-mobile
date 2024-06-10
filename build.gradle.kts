@@ -3,5 +3,6 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.jetbrainsKotlinAndroid) apply false
     id("com.google.gms.google-services") version "4.3.15" apply false
+    id("com.google.secrets_gradle_plugin") version "0.4"
     alias(libs.plugins.googleAndroidLibrariesMapsplatformSecretsGradlePlugin) apply false
 }
