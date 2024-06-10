@@ -23,4 +23,6 @@
     <string name="recovery_password_button">save password</string>
     <string name="forgot_password">Forgot password</string>
     <string name="signIn">Not a user yet? SignIn</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="button_spot_places">Spot</string>
 </resources>

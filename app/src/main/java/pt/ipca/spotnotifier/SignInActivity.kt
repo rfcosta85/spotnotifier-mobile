@@ -131,7 +131,7 @@ class SignInActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, MapsActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(
                         baseContext,
