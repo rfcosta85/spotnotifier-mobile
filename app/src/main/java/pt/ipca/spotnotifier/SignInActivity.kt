@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +32,11 @@ class SignInActivity : AppCompatActivity() {
         auth = Firebase.auth
 //        auth = FirebaseAuth.getInstance()
         db = Firebase.firestore
+
+        findViewById<TextView>(R.id.forgot_password).setOnClickListener {
+            val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
+            startActivity(intent)
+        }
 
         auth.currentUser?.let {
             readUserFromDB(it.uid)
