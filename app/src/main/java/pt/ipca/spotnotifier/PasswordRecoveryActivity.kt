@@ -2,6 +2,7 @@ package pt.ipca.spotnotifier
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
@@ -21,13 +22,14 @@ class PasswordRecoveryActivity : AppCompatActivity() {
             codeEditText = findViewById(R.id.editTextText2)
             auth = FirebaseAuth.getInstance()
 
-            val button = findViewById<ImageButton>(R.id.imageButton)
-            button.setOnClickListener {
+            val back_butn = findViewById<ImageButton>(R.id.imageButton)
+            back_butn.setOnClickListener {
                 // Finish the current activity and go back to the previous one
                 finish()
             }
 
-            button.setOnClickListener {
+            val save_passwd_butn = findViewById<Button>(R.id.main_btn_register)
+            save_passwd_butn.setOnClickListener {
                 val code = codeEditText.text.toString().trim()
                 val newPassword = newPasswordEditText.text.toString().trim()
 
