@@ -9,14 +9,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
-class RecuperacaoPasswordActivity : AppCompatActivity() {
+class PasswordRecoveryActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var codeEditText: EditText
     private lateinit var newPasswordEditText: EditText
         override fun onCreate(savedInstanceState: Bundle?){
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.recuperacao_password)
+            setContentView(R.layout.password_recovery)
 
             newPasswordEditText = findViewById(R.id.editTextText3)
             codeEditText = findViewById(R.id.editTextText2)
