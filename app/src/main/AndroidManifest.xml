@@ -54,10 +54,10 @@
             android:name=".MainActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".SobreActivity"
             android:exported="false" />
         <activity
-            android:name=".PasswordRecoveryActivity"
+            android:name=".RecuperacaoPasswordActivity"
             android:exported="false" />
     </application>
 
