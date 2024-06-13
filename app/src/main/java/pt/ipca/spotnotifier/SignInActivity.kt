@@ -34,7 +34,7 @@ class SignInActivity : AppCompatActivity() {
         db = Firebase.firestore
 
         findViewById<TextView>(R.id.forgot_password).setOnClickListener {
-            val intent = Intent(this, PasswordRecoveryActivity::class.java)
+            val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
             startActivity(intent)
         }
 
