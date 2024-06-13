@@ -24,4 +24,6 @@
     <string name="signIn">Ainda não é utilizador? Regista-se</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="button_spot_places">Vagas</string>
+    <string name="save_address">Guardar morada</string>
+    <string name="save_email">Guardar endereço de email</string>
 </resources>

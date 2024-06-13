@@ -25,4 +25,8 @@
     <string name="signIn">Not a user yet? SignIn</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="button_spot_places">Spot</string>
+    <string name="save_address">Save Address</string>
+    <string name="save_email">Save Email</string>
+
+
 </resources>

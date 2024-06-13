@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".Contacts">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -20,7 +19,7 @@
         app:srcCompat="@drawable/logotipo" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonCont"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"

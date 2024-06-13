@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".UpdateEmail">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -19,7 +19,7 @@
         android:contentDescription="Submit button"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonEmaill"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -55,7 +55,9 @@
         android:id="@+id/button"
         android:layout_width="311dp"
         android:layout_height="75dp"
-        android:text="Guardar endereço de email"
+        android:backgroundTint="@color/dark_orange"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/save_email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
