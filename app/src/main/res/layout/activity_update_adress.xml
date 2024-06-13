@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".UpdateAdress">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -19,7 +19,7 @@
         android:contentDescription="Submit button"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonAdresss"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -107,10 +107,13 @@
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:text="Guardar morada"
+        android:backgroundTint="@color/dark_orange"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
