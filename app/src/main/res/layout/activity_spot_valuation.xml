@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SpotValuationActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="231dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/logo"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="403dp" />
+    
+    <TextView
+        android:layout_width="305dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="start"
+        android:gravity="center"
+        android:text="@string/evaluation_spot"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/montserrat"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="305dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="28dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/found_spot"
+        android:textColor="@color/light_blue"
+        android:fontFamily="@font/montserrat"
+        android:textSize="16sp"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="30dp">
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:textColor="@color/dark_blue"
+            android:text="@string/yes_radio"/>
+        <RadioButton
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:textColor="@color/dark_blue"
+            android:text="@string/no_radio"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="305dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:gravity="start"
+        android:text="@string/send_message"
+        android:textColor="@color/light_blue"
+        android:fontFamily="@font/montserrat"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:layout_width="267dp"
+        android:layout_height="206dp"
+        android:hint="@string/send_message_place_holder"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:background="@drawable/leave_a_comment_input"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/main_btn_send_evaluation"
+        android:layout_width="311dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/dark_orange"
+        android:fontFamily="@font/montserrat"
+        android:onClick="sendEvaluation"
+        android:text="@string/save_evaluation"
+        tools:layout_editor_absoluteX="145dp" />
+</LinearLayout>
