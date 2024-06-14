@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +44,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, SpotValuationActivity::class.java)
+            startActivity(intent)
+        }, 10000)
         val googleMapsApiKey = applicationContext.packageManager
             .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
             .metaData.getString("com.google.android.geo.API_KEY")
@@ -178,6 +184,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             startActivity(browserIntent)
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, SpotValuationActivity::class.java)
+            startActivity(intent)
+        }, 10000)
     }
 
     private fun addMarkersAroundUserLocation(userLocation: LatLng) {
