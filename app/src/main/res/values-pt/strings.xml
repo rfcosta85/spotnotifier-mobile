@@ -44,4 +44,5 @@
     <string name="authentication_alert_fail">Falha ao logar</string>
     <string name="create_user_fail">Falha ao criar usuário</string>
     <string name="create_user_success">Usuário criado com sucesso</string>
+    <string name="input_hint_maps">Pesquise aqui</string>
 </resources>

@@ -45,9 +45,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var sharedPreferences: SharedPreferences
     private val PREFERENCE_NAME = "spot_notifier_prefs"
     private val KEY_ACTIVITY_STARTED = "spot_valuation_activity_started"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        /**
+         * Check if the SpotValuationActivity has been started before.
+         * If not, start the SpotValuationActivity after a delay of 10 seconds.
+         * The delay is handled using a Handler and the shared preference is updated to prevent
+         * repeated starts.
+         */
         sharedPreferences = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
         if (!sharedPreferences.getBoolean(KEY_ACTIVITY_STARTED, false)) {
             Handler(Looper.getMainLooper()).postDelayed({
@@ -69,7 +76,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -86,7 +92,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-
                 place.latLng?.let {
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 13f))
                     addMarkersAroundUserLocation(it)
@@ -100,7 +105,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         autoCompleteFragment.view?.let {
             val inputText = it.findViewById<EditText>(com.google.android.libraries.places.R.id.places_autocomplete_search_input)
             inputText.setBackgroundResource(R.drawable.border_input)
-            inputText.hint = "Pesquise aqui"
+            inputText.hint = getString(R.string.input_hint_maps)
             inputText.setCompoundDrawablesWithIntrinsicBounds(
                 R.drawable.ic_geolocation,
                 0,
@@ -110,7 +115,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             val userIcon = ImageView(this).apply {
                 setImageResource(R.drawable.ic_user)
-                setPadding(8,8,8,8)
+                setPadding(8, 8, 8, 8)
             }
 
             val layoutParams = LinearLayout.LayoutParams(
@@ -126,8 +131,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
+     * This is where we can add markers or lines, add listeners or move the camera.
+     * In this case, we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -143,13 +148,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
@@ -164,6 +162,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
     }
+
+    /**
+     * Navigate to the selected marker's position using Google Maps or a browser.
+     *
+     * @param marker The marker that was clicked.
+     */
     private fun navigateToMarker(marker: Marker) {
         val position = marker.position
         val gmmIntentUri = Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
@@ -182,12 +186,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }, 10000)
     }
 
+    /**
+     * Add markers around the user's location in a circular pattern.
+     *
+     * @param userLocation The user's current location.
+     */
     private fun addMarkersAroundUserLocation(userLocation: LatLng) {
         val numMarkers = 6
         val radius = 1000
 
         val angleIncrement = 360f / numMarkers
-        for(i in 0 until numMarkers) {
+        for (i in 0 until numMarkers) {
             val angle = i * angleIncrement
             val offsetX = (radius * cos(Math.toRadians(angle.toDouble()))).toFloat()
             val offsetY = (radius * sin(Math.toRadians(angle.toDouble()))).toFloat()
@@ -199,6 +208,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Get the last known location of the user and update the map.
+     * Adds a marker to the user's position and moves the camera to it.
+     */
     private fun getLastKnownLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
@@ -212,6 +225,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
         }
     }
+
+    /**
+     * Find a view with the specified type within a given root view.
+     *
+     * @param T The type of the view to find.
+     * @param root The root view to search within.
+     * @param viewType The class of the view type to find.
+     * @return The view of the specified type, or null if not found.
+     */
     private fun <T : View> findViewWithType(root: View, viewType: Class<T>): T? {
         if (viewType.isInstance(root)) {
             return viewType.cast(root)
@@ -228,6 +250,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return null
     }
 
+    /**
+     * Check if the app has location permission.
+     * If not, request the permission from the user.
+     */
     private fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED) {
@@ -243,11 +269,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    /**
+     * Handle the profile click event and navigate to the ProfileActivity.
+     *
+     * @param view The view that was clicked.
+     */
     fun onProfileClick(view: View) {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
     }
 
+    /**
+     * Handle the result of permission requests.
+     *
+     * @param requestCode The request code passed in requestPermissions().
+     * @param permissions The requested permissions.
+     * @param grantResults The grant results for the corresponding permissions.
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
