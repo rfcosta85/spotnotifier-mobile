@@ -5,6 +5,7 @@
     <string name="user_name" translatable="true">Insert username</string>
     <string name="user_last_name" translatable="true">Insert the last name</string>
     <string name="password" translatable="true">Insert your password</string>
+    <string name="email_input_alert">Email field is necessary</string>
     <string name="email" translatable="true">Insert your Email</string>
     <string name="register_button">Register</string>
     <string name="first_name_label">First name</string>
@@ -38,6 +39,9 @@
     <string name="change_image">Update image</string>
     <string name="change_address">Update Address</string>
     <string name="change_contact">Update Contact</string>
-
-
+    <string name="recovery_email_alert">Recovery mail sent</string>
+    <string name="authentication_alert">Authentication success</string>
+    <string name="authentication_alert_fail">Authentication fail</string>
+    <string name="create_user_fail">create user fail</string>
+    <string name="create_user_success">user created</string>
 </resources>

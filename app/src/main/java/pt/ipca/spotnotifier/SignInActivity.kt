@@ -86,21 +86,21 @@ class SignInActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("ME", "createUserWithEmail:success")
+                    Log.d("ME", getString(R.string.create_user_success))
                     val user = auth.currentUser
                     Toast.makeText(
                         baseContext,
-                        "Authentication Success",
+                        getString(R.string.create_user_success),
                         Toast.LENGTH_SHORT,
                     ).show()
                     if(user != null) {
                         insertUserIntoDB(user.uid, name, email)
                     }
                 } else {
-                    Log.w("MEI", "createUserWithEmail:failure", task.exception)
+                    Log.w("MEI", getString(R.string.create_user_fail), task.exception)
                     Toast.makeText(
                         baseContext,
-                        "Authentication failed",
+                        getString(R.string.create_user_fail),
                         Toast.LENGTH_SHORT,
                     ).show()
                 }
@@ -117,16 +117,16 @@ class SignInActivity : AppCompatActivity() {
         val email: String = binding.mainEtName.text.toString().trim()
 
         if (email.isEmpty()) {
-            binding.mainEtName.error = "Campo de email é obrigatório"
-            Toast.makeText(this, "Campo de email é obrigatório", Toast.LENGTH_SHORT).show()
+            binding.mainEtName.error = getString(R.string.email_input_alert)
+            Toast.makeText(this, getString(R.string.email_input_alert), Toast.LENGTH_SHORT).show()
             return
         }
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(baseContext, "Email de Recuperação enviado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.recovery_password_button), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(baseContext, "Erro ao enviar email de recuperação", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.recovery_password_button), Toast.LENGTH_SHORT).show()
                 }
             }
     }
@@ -139,13 +139,13 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(intent)
                     Toast.makeText(
                         baseContext,
-                        "Authentication Success",
+                        getString(R.string.authentication_alert),
                         Toast.LENGTH_SHORT,
                     ).show()
                 } else {
                     Toast.makeText(
                         baseContext,
-                        "Authentication failed",
+                        getString(R.string.authentication_alert_fail),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

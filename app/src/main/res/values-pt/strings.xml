@@ -5,6 +5,7 @@
     <string name="user_name" translatable="true">Insira o primeiro nome </string>
     <string name="user_last_name" translatable="true">Insira o último nome</string>
     <string name="password" translatable="true">Insira a sua senha</string>
+    <string name="email_input_alert">O campo de email é obrigatório</string>
     <string name="email" translatable="true">Insira o seu Email</string>
     <string name="register_button">Cadastrar</string>
     <string name="first_name_label">Primeiro nome</string>
@@ -38,4 +39,9 @@
     <string name="change_image">Atualizar imagem</string>
     <string name="change_address">Atualizar morada</string>
     <string name="change_contact">Atualizar contacto</string>
+    <string name="recovery_email_alert">Email de recuperação enviado</string>
+    <string name="authentication_alert">Login realizado com sucesso</string>
+    <string name="authentication_alert_fail">Falha ao logar</string>
+    <string name="create_user_fail">Falha ao criar usuário</string>
+    <string name="create_user_success">Usuário criado com sucesso</string>
 </resources>
