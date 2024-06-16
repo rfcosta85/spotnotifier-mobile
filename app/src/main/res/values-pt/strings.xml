@@ -50,4 +50,7 @@
     <string name="new_password_success">Nova senha inserida com sucesso</string>
     <string name="error_new_password">Erro ao redefinir senha</string>
     <string name="create_account_success">Conta criada com sucesso</string>
+    <string name="please_select_an_option">Por favor selecione uma opção</string>
+    <string name="message_sent">Mensagem enviada com sucesso</string>
+    <string name="error_sent_message">Error ao enviar a mensagem</string>
 </resources>

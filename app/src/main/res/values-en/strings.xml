@@ -50,4 +50,7 @@
     <string name="new_password_success">New password defined with success</string>
     <string name="error_new_password">Error on new password request</string>
     <string name="create_account_success">Success to create the account</string>
+    <string name="please_select_an_option">Please insert an option</string>
+    <string name="message_sent">Success in sent message</string>
+    <string name="error_sent_message">Error to sent the message</string>
 </resources>

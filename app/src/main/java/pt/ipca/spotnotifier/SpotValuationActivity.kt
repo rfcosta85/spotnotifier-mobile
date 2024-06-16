@@ -56,7 +56,7 @@ class SpotValuationActivity : AppCompatActivity() {
             sendEvaluation(evaluation, message)
 
         } else {
-            Toast.makeText(this, "Por favor seleciona uma opção",
+            Toast.makeText(this, getString(R.string.please_select_an_option),
                 Toast.LENGTH_SHORT).show()
         }
     }
@@ -86,14 +86,14 @@ class SpotValuationActivity : AppCompatActivity() {
          db.collection("evaluations")
              .add(evaluationData)
              .addOnSuccessListener { documentReference ->
-                 Toast.makeText(baseContext, "Mensagem enviada com sucesso",
+                 Toast.makeText(baseContext, getString(R.string.message_sent),
                      Toast.LENGTH_SHORT).show()
                  val intent = Intent(this, MapsActivity::class.java)
                  startActivity(intent)
                  finish()
              }
              .addOnFailureListener {
-                 Toast.makeText(baseContext, "Erro ao enviar a mensagem",
+                 Toast.makeText(baseContext, getString(R.string.error_sent_message),
                      Toast.LENGTH_SHORT).show()
              }
     }
