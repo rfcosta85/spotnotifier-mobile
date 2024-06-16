@@ -113,7 +113,7 @@ class SignInActivity : AppCompatActivity() {
         authUserInFireBase(email, password)
     }
 
-    fun recovery(v: View) {
+    fun recovery(view: View) {
         val email: String = binding.mainEtName.text.toString()
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->

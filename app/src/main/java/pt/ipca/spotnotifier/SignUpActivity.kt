@@ -72,6 +72,7 @@ class SignUpActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.main_et_email).text.toString()
         val password = findViewById<EditText>(R.id.main_et_password).text.toString()
         val name = findViewById<EditText>(R.id.main_et_name).text.toString()
+        Toast.makeText(baseContext, "Conta criada com sucesso", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, SignInActivity::class.java)
         createUserInFirebase(name, email, password)
         startActivity(intent)
