@@ -88,7 +88,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .replace(R.id.autocomplete_fragment_container, autoCompleteFragment)
             .commit()
 
-        autoCompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
+        autoCompleteFragment
+            .setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG))
 
         autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
@@ -103,7 +104,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
         autoCompleteFragment.view?.let {
-            val inputText = it.findViewById<EditText>(com.google.android.libraries.places.R.id.places_autocomplete_search_input)
+            val inputText = it.findViewById<EditText>(com.google.android.libraries
+                .places.R.id.places_autocomplete_search_input)
             inputText.setBackgroundResource(R.drawable.border_input)
             inputText.hint = getString(R.string.input_hint_maps)
             inputText.setCompoundDrawablesWithIntrinsicBounds(
@@ -170,7 +172,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     private fun navigateToMarker(marker: Marker) {
         val position = marker.position
-        val gmmIntentUri = Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
+        val gmmIntentUri =
+            Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         if (mapIntent.resolveActivity(packageManager) != null) {
@@ -201,7 +204,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val offsetX = (radius * cos(Math.toRadians(angle.toDouble()))).toFloat()
             val offsetY = (radius * sin(Math.toRadians(angle.toDouble()))).toFloat()
             val newLat = userLocation.latitude + offsetY / 111111
-            val newLng = userLocation.longitude + offsetX / (111111 * cos(Math.toRadians(userLocation.latitude)))
+            val newLng =
+                userLocation.longitude + offsetX / (111111 * cos(Math.toRadians(userLocation.latitude)))
 
             val markerPosition = LatLng(newLat, newLng)
             mMap.addMarker(MarkerOptions().position(markerPosition).title("Marker $i"))
