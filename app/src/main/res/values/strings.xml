@@ -20,7 +20,7 @@
     <string name="user_login_name">Insira seu nome de utilizador</string>
     <string name="user_name_label_login">Nome de utilizador</string>
     <string name="button_login">Entrar</string>
-    <string name="recovery_password_button">Guardar palavra-passe</string>
+    <string name="recovery_password_button">Por favor verifique a sua caixa de email</string>
     <string name="forgot_password">Esqueceu a sua palavra-passe</string>
     <string name="signIn">Ainda não é utilizador? Regista-se</string>
     <string name="title_activity_maps">MapsActivity</string>
@@ -43,4 +43,13 @@
     <string name="authentication_alert_fail">Falha ao autenticar</string>
     <string name="create_user_fail">Falha ao criar utilizador</string>
     <string name="create_user_success">Utilizador criado com sucesso</string>
+    <string name="input_hint_maps">Pesquise aqui</string>
+    <string name="insert_your_code">Por favor, insira o código recebido no email</string>
+    <string name="insert_your_new_password">Por favor, insira a nova palavra-passe</string>
+    <string name="new_password_success">Nova palavra-passe inserida com sucesso</string>
+    <string name="error_new_password">Erro ao redefinir palavra-passe</string>
+    <string name="create_account_success">Conta criada com sucesso</string>
+    <string name="please_select_an_option">Por favor selecione uma opção</string>
+    <string name="message_sent">Mensagem enviada com sucesso</string>
+    <string name="error_sent_message">Error ao enviar a mensagem</string>
 </resources>
