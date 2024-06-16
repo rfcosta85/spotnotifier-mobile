@@ -2,6 +2,7 @@ package pt.ipca.spotnotifier
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -13,7 +14,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -42,13 +42,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var userLocation: LatLng
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private val PREFERENCE_NAME = "spot_notifier_prefs"
+    private val KEY_ACTIVITY_STARTED = "spot_valuation_activity_started"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, SpotValuationActivity::class.java)
-            startActivity(intent)
-        }, 10000)
+        sharedPreferences = getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
+        if (!sharedPreferences.getBoolean(KEY_ACTIVITY_STARTED, false)) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(this, SpotValuationActivity::class.java)
+                startActivity(intent)
+                sharedPreferences.edit().putBoolean(KEY_ACTIVITY_STARTED, true).apply()
+            }, 10000)
+        }
+
         val googleMapsApiKey = applicationContext.packageManager
             .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
             .metaData.getString("com.google.android.geo.API_KEY")
