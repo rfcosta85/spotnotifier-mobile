@@ -114,7 +114,13 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun recovery(view: View) {
-        val email: String = binding.mainEtName.text.toString()
+        val email: String = binding.mainEtName.text.toString().trim()
+
+        if (email.isEmpty()) {
+            binding.mainEtName.error = "Campo de email é obrigatório"
+            Toast.makeText(this, "Campo de email é obrigatório", Toast.LENGTH_SHORT).show()
+            return
+        }
         auth.sendPasswordResetEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -123,8 +129,6 @@ class SignInActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Erro ao enviar email de recuperação", Toast.LENGTH_SHORT).show()
                 }
             }
-//        val intent = Intent(this, RecuperacaoPasswordActivity::class.java)
-//        startActivity(intent)
     }
 
     private fun authUserInFireBase(email: String, password: String) {

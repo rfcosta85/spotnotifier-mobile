@@ -52,7 +52,7 @@
         android:fontFamily="@font/montserrat"
         android:gravity="center_vertical"
         android:hint="@string/user_login_name"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:paddingStart="24dp"
         android:paddingEnd="0dp"
         app:layout_constraintBottom_toTopOf="@+id/main_et_last_name"
