@@ -60,8 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Places.initialize(applicationContext, "@string/google_maps_key")
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -78,11 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                val latLng = place.latLng
-//                if (latLng != null) {
-//                    mMap.addMarker(MarkerOptions().position(latLng).title(place.name))
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-//                }
+
                 place.latLng?.let {
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 13f))
                     addMarkersAroundUserLocation(it)
@@ -160,19 +155,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
     }
-
-//    private fun navigateToMarker(destination: LatLng) {
-//        val gmmIntentUri = Uri.parse("google.navigation:q${destination.latitude}, ${destination.longitude}")
-//        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//        mapIntent.setPackage("com.google.android.apps.maps")
-//        if (mapIntent.resolveActivity(packageManager) != null) {
-//            startActivity(mapIntent)
-//        } else {
-//            val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//            startActivity(browserIntent)
-//        }
-//    }
-
     private fun navigateToMarker(marker: Marker) {
         val position = marker.position
         val gmmIntentUri = Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
