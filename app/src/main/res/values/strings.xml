@@ -48,4 +48,5 @@
     <string name="insert_your_new_password">Por favor, insira a nova palavra-passe</string>
     <string name="new_password_success">Nova palavra-passe inserida com sucesso</string>
     <string name="error_new_password">Erro ao redefinir palavra-passe</string>
+    <string name="create_account_success">Conta criada com sucesso</string>
 </resources>

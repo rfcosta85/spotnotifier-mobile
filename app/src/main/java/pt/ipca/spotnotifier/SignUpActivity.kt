@@ -23,7 +23,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        enableEdgeToEdge()
         auth = Firebase.auth
         db = Firebase.firestore
 
@@ -32,7 +31,18 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    fun insertUserIntoDB(uid: String, name: String, email: String) {
+    /**
+     * Inserts a new user into the Firestore database.
+     *
+     * This method creates a new user document in the "users" collection with the provided user ID,
+     * name, and email. It uses `addOnCompleteListener` to handle the asynchronous task completion
+     * and logs the success or failure to the logcat.
+     *
+     * @param uid The unique identifier for the user.
+     * @param name The user's name.
+     * @param email The user's email address.
+     */
+    private fun insertUserIntoDB(uid: String, name: String, email: String) {
         val user = hashMapOf(
             "uid" to uid,
             "name" to name,
@@ -49,6 +59,13 @@ class SignUpActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Reads a user's data from the Firestore database.
+     * This method retrieves the user document from the "users" collection for the provided user ID.
+     * It uses `addSnapshotListener` to listen for changes to the document and logs the
+     * retrieved data or an error message to the logcat.
+     * @param uid The unique identifier for the user.
+     */
     private fun readUserFromDB(uid: String) {
         val docRef = db.collection("users").document("$uid")
         docRef.addSnapshotListener{ snapshot, e ->
@@ -59,8 +76,6 @@ class SignUpActivity : AppCompatActivity() {
 
             if (snapshot != null && snapshot.exists()) {
                 val name = snapshot.getString("name")
-//                val tv = findViewById<TextView>(R.id.main_tv_username)
-//                tv.text = name
                 Log.d("MEI", "Current data: ${snapshot.data}")
             } else {
                 Log.d("MEI", "Current data: null")
@@ -68,16 +83,42 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Handles user registration process.
+     *
+     * This method retrieves user information from the UI (email, password, name),
+     * shows a toast message
+     * indicating successful registration (regardless of actual registration success),
+     * and starts the sign-in
+     * activity. It then calls `createUserInFirebase` to handle user creation in Firebase
+     * Authentication.
+     *
+     * @param v The View clicked to trigger registration (usually a button).
+     */
     fun register(v: View) {
         val email = findViewById<EditText>(R.id.main_et_email).text.toString()
         val password = findViewById<EditText>(R.id.main_et_password).text.toString()
         val name = findViewById<EditText>(R.id.main_et_name).text.toString()
-        Toast.makeText(baseContext, "Conta criada com sucesso", Toast.LENGTH_SHORT).show()
+        Toast.makeText(baseContext, getString(R.string.create_account_success), Toast.LENGTH_SHORT).show()
         val intent = Intent(this, SignInActivity::class.java)
         createUserInFirebase(name, email, password)
         startActivity(intent)
     }
 
+    /**
+     * Creates a new user in Firebase Authentication.
+     *
+     * This method attempts to create a new user with the provided email and password using
+     * `createUserWithEmailAndPassword`. It uses `addOnCompleteListener` to handle
+     * the asynchronous task
+     * completion, logging success or failure messages and updating the UI accordingly.
+     * If successful,
+     * it also inserts the user's information into the database using `insertUserIntoDB`.
+     *
+     * @param name The user's name.
+     * @param email The user's email address.
+     * @param password The user's password.
+     */
     private fun createUserInFirebase(name: String, email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
