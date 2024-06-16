@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateProfile">
+
+    <ImageButton
+        android:id="@+id/imageButtonBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/btnback"
+        android:contentDescription="Submit button"/>
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="155dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="128dp"
+        android:contentDescription="Submit button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logotipo" />
+
+    <ImageView
+        android:id="@+id/imageIconconUser"
+        android:layout_width="99dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/icon_usser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/user_name_label_login"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageIconconUser" />
+
+    <ImageView
+        android:id="@+id/imageIconconPass"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/updatepass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textView1UpPass"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:onClick="onUpdatePassword"
+        android:text="@string/change_password"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageIconconPass"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <ImageView
+        android:id="@+id/imageViewtraco"
+        android:layout_width="425dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/traco_orizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1UpPass" />
+
+    <ImageView
+        android:id="@+id/imageIconconUpImg"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/updateimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco" />
+
+    <TextView
+        android:id="@+id/textViewUpImg"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:onClick="onUpdateImg"
+        android:text="@string/change_image"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageIconconUpImg"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco" />
+
+    <ImageView
+        android:id="@+id/imageViewtraco2"
+        android:layout_width="425dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/traco_orizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUpImg" />
+
+    <ImageView
+        android:id="@+id/imageIconconUpAdress"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/envelope"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco2" />
+
+    <TextView
+        android:id="@+id/textViewUpAdress"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:onClick="onUpdateAdress"
+        android:text="@string/change_address"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageIconconUpAdress"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco2" />
+
+    <ImageView
+        android:id="@+id/imageViewtraco3"
+        android:layout_width="425dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/traco_orizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUpAdress" />
+
+    <ImageView
+        android:id="@+id/imageIconconUpContact"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/mobile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco3" />
+
+    <TextView
+        android:id="@+id/textViewUpContact"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:onClick="onUpdateContact"
+        android:text="@string/change_contact"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageIconconUpContact"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco3" />
+
+    <ImageView
+        android:id="@+id/imageViewtraco4"
+        android:layout_width="425dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/traco_orizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUpContact" />
+
+    <ImageView
+        android:id="@+id/imageIconconUpEmail"
+        android:layout_width="48dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco4" />
+
+    <TextView
+        android:id="@+id/textViewUpEmail"
+        android:layout_width="229dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:onClick="onUpdateEmail"
+        android:text="Alterar email"
+        android:textSize="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageIconconUpEmail"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewtraco4" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

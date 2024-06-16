@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -232,6 +233,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // Permission has already been granted
             getLastKnownLocation()
         }
+    }
+
+    fun onProfileClick(view: View) {
+        val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onRequestPermissionsResult(

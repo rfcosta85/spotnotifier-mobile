@@ -33,4 +33,8 @@
     <string name="send_message">Deseja deixar um comentário?</string>
     <string name="send_message_place_holder">Deixe aqui o seu comentário</string>
     <string name="save_evaluation">Guardar avaliação da vaga</string>
+    <string name="change_password">Alterar palavra-passe</string>
+    <string name="change_image">Alterar imagem</string>
+    <string name="change_address">Alterar morada</string>
+    <string name="change_contact">Alterar contacto</string>
 </resources>
