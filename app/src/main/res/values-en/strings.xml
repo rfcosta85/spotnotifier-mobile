@@ -45,4 +45,8 @@
     <string name="create_user_fail">create user fail</string>
     <string name="create_user_success">user created</string>
     <string name="input_hint_maps">Search here</string>
+    <string name="insert_your_code">Please check your email and insert the code here</string>
+    <string name="insert_your_new_password">Please insert the new password</string>
+    <string name="new_password_success">New password defined with success</string>
+    <string name="error_new_password">Error on new password request</string>
 </resources>

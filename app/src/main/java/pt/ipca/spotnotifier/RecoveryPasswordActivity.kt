@@ -23,7 +23,6 @@ class RecoveryPasswordActivity : AppCompatActivity() {
 
             val button = findViewById<ImageButton>(R.id.imageButton)
             button.setOnClickListener {
-                // Finish the current activity and go back to the previous one
                 finish()
             }
 
@@ -32,13 +31,13 @@ class RecoveryPasswordActivity : AppCompatActivity() {
                 val newPassword = newPasswordEditText.text.toString().trim()
 
                 if (code.isEmpty()) {
-                    codeEditText.error = "Por favor, insira o código recebido no email"
+                    codeEditText.error = getString(R.string.insert_your_code)
                     codeEditText.requestFocus()
                     return@setOnClickListener
                 }
 
                 if (newPassword.isEmpty()) {
-                    newPasswordEditText.error = "Por favor, insira uma nova senha"
+                    newPasswordEditText.error = getString(R.string.insert_your_new_password)
                     newPasswordEditText.requestFocus()
                     return@setOnClickListener
                 }
@@ -46,17 +45,28 @@ class RecoveryPasswordActivity : AppCompatActivity() {
             }
 
         }
-
+    /**
+     * Resets the password using a confirmation code.
+     *
+     * This method attempts to reset the user's password using the provided confirmation code
+     * and a new password. If successful, a toast message is displayed indicating success
+     * and the user is redirected to the sign-in activity. Otherwise, a toast message is
+     * displayed indicating an error.
+     *
+     * @param code The confirmation code sent to the user.
+     * @param newPassword The new password to be set.
+     */
     fun recoveryPassword(code: String, newPassword: String){
         auth.confirmPasswordReset(code, newPassword)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(baseContext, "Senha redefinida com sucesso", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.new_password_success),
+                        Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, SignInActivity::class.java))
                 } else {
-                    Toast.makeText(baseContext, "Erro ao redefinir palavra passe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, getString(R.string.error_new_password),
+                        Toast.LENGTH_SHORT).show()
                 }
             }
-        Toast.makeText(baseContext, "Botão clicado", Toast.LENGTH_SHORT).show()
     }
 }
