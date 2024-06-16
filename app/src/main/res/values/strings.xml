@@ -26,4 +26,14 @@
     <string name="button_spot_places">Vagas</string>
     <string name="save_address">Guardar morada</string>
     <string name="save_email">Guardar endereço de email</string>
+    <string name="change_password">Alterar palavra-passe</string>
+    <string name="change_image">Alterar imagem</string>
+    <string name="change_address">Alterar morada</string>
+    <string name="change_contact">Alterar contacto</string>
+
+
+
+
+
+
 </resources>

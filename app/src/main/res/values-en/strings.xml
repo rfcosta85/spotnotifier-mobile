@@ -27,6 +27,12 @@
     <string name="button_spot_places">Spot</string>
     <string name="save_address">Save Address</string>
     <string name="save_email">Save Email</string>
+    <string name="change_password">Update Password</string>
+    <string name="change_image">Update image</string>
+    <string name="change_address">Update Address</string>
+    <string name="change_contact">Update Contact</string>
+
+
 
 
 </resources>

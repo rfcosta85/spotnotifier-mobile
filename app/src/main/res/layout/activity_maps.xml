@@ -9,6 +9,7 @@
 <!--    tools:context=".MapsActivity" />-->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,6 +20,7 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 
     <FrameLayout
         android:id="@+id/autocomplete_fragment_container"
@@ -49,7 +51,7 @@
             android:layout_height="50dp"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_weight="1">
+            android:layout_weight="0.5">
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="20dp"
@@ -57,7 +59,7 @@
             <TextView
                 android:layout_width="55dp"
                 android:layout_height="16dp"
-                android:textSize="14sp"
+                android:textSize="10sp"
                 android:textColor="@color/dark_blue"
                 android:text="Explorar"/>
         </LinearLayout>
@@ -67,7 +69,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_weight="1.2">
+            android:layout_weight="0.7">
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="20dp"
@@ -75,7 +77,7 @@
             <TextView
                 android:layout_width="105dp"
                 android:layout_height="16dp"
-                android:textSize="14sp"
+                android:textSize="10sp"
                 android:textColor="@color/dark_blue"
                 android:text="Pesquisar vagas"/>
         </LinearLayout>
@@ -85,24 +87,43 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="0.7">
             <ImageView
                 android:layout_width="16dp"
                 android:layout_height="20dp"
                 android:src="@drawable/bell"/>
             <TextView
-                android:layout_width="80dp"
+                android:layout_width="59dp"
                 android:layout_height="16dp"
-                android:textSize="14sp"
+                android:textSize="10sp"
                 android:textColor="@color/dark_blue"
                 android:text="Notificações"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/profile"
+            android:onClick="onProfileClick"
+            android:layout_weight="0.6">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="15dp"
+                android:src="@drawable/icon_usser" />
+
+            <TextView
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:text="My Menu"
+                android:textColor="@color/dark_blue"
+                android:textSize="10sp" />
+        </LinearLayout>
     </LinearLayout>
 
-
-
-<!--    <Button-->
+    <!--    <Button-->
 <!--        android:id="@+id/button_vagas"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
