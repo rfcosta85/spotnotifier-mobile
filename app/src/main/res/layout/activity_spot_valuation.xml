@@ -42,6 +42,7 @@
         android:textSize="16sp"/>
 
     <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:orientation="horizontal"
@@ -50,11 +51,13 @@
         android:layout_marginTop="8dp"
         android:layout_height="30dp">
         <RadioButton
+            android:id="@+id/radio_yes"
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:textColor="@color/dark_blue"
             android:text="@string/yes_radio"/>
         <RadioButton
+            android:id="@+id/radio_no"
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:textColor="@color/dark_blue"
@@ -62,6 +65,7 @@
     </RadioGroup>
 
     <TextView
+        android:id="@+id/text_view"
         android:layout_width="305dp"
         android:layout_height="22dp"
         android:layout_marginTop="8dp"
@@ -74,6 +78,7 @@
         android:textSize="16sp"/>
 
     <EditText
+        android:id="@+id/edit_text"
         android:layout_width="267dp"
         android:layout_height="206dp"
         android:hint="@string/send_message_place_holder"
@@ -90,7 +95,7 @@
         android:layout_marginTop="48dp"
         android:backgroundTint="@color/dark_orange"
         android:fontFamily="@font/montserrat"
-        android:onClick="sendEvaluation"
+        android:onClick="onSendButtonClick"
         android:text="@string/save_evaluation"
         tools:layout_editor_absoluteX="145dp" />
 </LinearLayout>

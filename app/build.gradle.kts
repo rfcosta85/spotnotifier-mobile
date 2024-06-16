@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation ("com.google.android.libraries.places:places:3.5.0")
     implementation ("com.google.android.gms:play-services-location:21.3.0")
+    implementation(libs.firebase.database.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
