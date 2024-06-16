@@ -27,12 +27,17 @@
     <string name="button_spot_places">Spot</string>
     <string name="save_address">Save Address</string>
     <string name="save_email">Save Email</string>
+    <string name="evaluation_spot">Spot evaluation</string>
+    <string name="found_spot">found a spot?</string>
+    <string name="yes_radio">Yes</string>
+    <string name="no_radio">No</string>
+    <string name="send_message">want send a message?</string>
+    <string name="send_message_place_holder">Leave here your message</string>
+    <string name="save_evaluation">Save spot evaluation</string>
     <string name="change_password">Update Password</string>
     <string name="change_image">Update image</string>
     <string name="change_address">Update Address</string>
     <string name="change_contact">Update Contact</string>
-
-
 
 
 </resources>

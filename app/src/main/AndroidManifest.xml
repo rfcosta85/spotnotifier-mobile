@@ -72,6 +72,15 @@
         <activity
             android:name=".RecuperacaoPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".RecoveryPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateAdress"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateEmail"
+            android:exported="false" />
     </application>
 
 </manifest>
