@@ -17,15 +17,7 @@
         android:theme="@style/Theme.Spotnotifier"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".UpdateAdress"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateEmail"
-            android:exported="false" />
-        <activity
-            android:name=".About"
-            android:exported="false" />
+
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -61,11 +53,22 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".SobreActivity"
+            android:name=".RecoveryPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".RecuperacaoPasswordActivity"
+            android:name=".UpdateAdress"
             android:exported="false" />
+        <activity
+            android:name=".UpdateEmail"
+            android:exported="false" />
+        <activity
+            android:name=".About"
+            android:exported="false" />
+
+        <activity
+            android:name=".SpotValuationActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

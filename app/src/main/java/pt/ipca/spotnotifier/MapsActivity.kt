@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -42,6 +44,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, SpotValuationActivity::class.java)
+            startActivity(intent)
+        }, 10000)
         val googleMapsApiKey = applicationContext.packageManager
             .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
             .metaData.getString("com.google.android.geo.API_KEY")
@@ -54,8 +60,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        Places.initialize(applicationContext, "@string/google_maps_key")
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -72,11 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         autoCompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                val latLng = place.latLng
-//                if (latLng != null) {
-//                    mMap.addMarker(MarkerOptions().position(latLng).title(place.name))
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-//                }
+
                 place.latLng?.let {
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(it, 13f))
                     addMarkersAroundUserLocation(it)
@@ -154,19 +155,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             true
         }
     }
-
-//    private fun navigateToMarker(destination: LatLng) {
-//        val gmmIntentUri = Uri.parse("google.navigation:q${destination.latitude}, ${destination.longitude}")
-//        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//        mapIntent.setPackage("com.google.android.apps.maps")
-//        if (mapIntent.resolveActivity(packageManager) != null) {
-//            startActivity(mapIntent)
-//        } else {
-//            val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//            startActivity(browserIntent)
-//        }
-//    }
-
     private fun navigateToMarker(marker: Marker) {
         val position = marker.position
         val gmmIntentUri = Uri.parse("google.navigation:q=${position.latitude}, ${position.longitude}")
@@ -178,6 +166,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val browserIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             startActivity(browserIntent)
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, SpotValuationActivity::class.java)
+            startActivity(intent)
+        }, 10000)
     }
 
     private fun addMarkersAroundUserLocation(userLocation: LatLng) {
