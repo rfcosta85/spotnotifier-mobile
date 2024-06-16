@@ -9,6 +9,7 @@
     <string name="first_name_label">Primeiro nome</string>
     <string name="last_name_label">último nome</string>
     <string name="email_label">Email</string>
+    <string name="email_input_alert">O campo de email é obrigatório</string>
     <string name="password_label">Palavra-passe</string>
     <string name="new_password">Nova palavra passe</string>
     <string name="insert_recovery_code">Insira o código</string>
@@ -37,4 +38,9 @@
     <string name="change_image">Alterar imagem</string>
     <string name="change_address">Alterar morada</string>
     <string name="change_contact">Alterar contacto</string>
+    <string name="recovery_email_alert">Email de recuperação enviado</string>
+    <string name="authentication_alert">Autenticação realizada com sucesso</string>
+    <string name="authentication_alert_fail">Falha ao autenticar</string>
+    <string name="create_user_fail">Falha ao criar utilizador</string>
+    <string name="create_user_success">Utilizador criado com sucesso</string>
 </resources>
